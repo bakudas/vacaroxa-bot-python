@@ -21,11 +21,12 @@ gc = gspread.authorize(credentials)
 wks = gc.open_by_key(os.getenv('GOOGLE_ID_SHEET'))
 
 # SELECIONA A PÁGINA DA PLANILHA
-worksheet = wks.get_worksheet(0) #ABA QUOTE DA PLANILHA
+worksheet = wks.get_worksheet(3) #ABA GABE DA PLANILHA
 
 
-@commands.command(name="quote", help="quotes para o dia-a-dia")
-async def quote(ctx, conteudo = " "):
+@commands.command(name="listagabe", help="lista de coisas da cabeça do gabe")
+@commands.has_any_role("dungeon master")
+async def listagabe(ctx, conteudo = " "):
 
     # LISTA DE QUOTES PARA O COMANDO
     planilha_conteudo = worksheet.col_values(1)
@@ -35,5 +36,8 @@ async def quote(ctx, conteudo = " "):
     else:
         await ctx.send(random.choice(planilha_conteudo))
 
+
 def setup(bot):
-    bot.add_command(quote)
+    bot.add_command(listagabe)
+
+

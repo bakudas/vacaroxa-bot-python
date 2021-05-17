@@ -12,7 +12,7 @@ load_dotenv()
 scope = ['https://spreadsheets.google.com/feeds']
 
 # CREDENCIAIS DE AUTENTICACAO
-credentials = ServiceAccountCredentials.from_json_keyfile_name('credenciais.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('gc.json', scope)
 
 # AUTENTICA
 gc = gspread.authorize(credentials)
