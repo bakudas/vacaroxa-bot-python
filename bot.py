@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 
 # CARREGA O ENV
 load_dotenv()
+
+# TOKEN -> GARANTIR SEGURANÇA DISSO
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 # DESCRIÇÃO, HELP E INTENTS
@@ -25,21 +27,23 @@ async def on_ready():
     print('-------------------------------------')
     print(f'Logado como: {bot.user.name} às {dt.hour}:{dt.minute}')
     print('-------------------------------------')
+    print('Comandos carregados: ')
 
     # CARREGA OS COMANDOS DA PASTA ./Commands
     diretorio = os.curdir + "/Commands"
     for filename in os.listdir(diretorio):
         if filename.endswith(".py"):
             bot.load_extension(f'{diretorio.strip("./")}.{filename.strip(".py")}') # CARREGA NO FORMATO Pasta.nome_arquivo
+            print(f'{filename}')
 
 
 # EVENTO QUE ESCUTA AS MENSAGENS NO SERVIDOR
 @bot.event
 async def on_message(message):
 
-    # PROCESSO NECESSÁRIO PARA UTILIZAR O EVENTO E OS COMANDOS DE BOT
+    # COROTINA NECESSÁRIA PARA UTILIZAR O EVENTO DE ESCUTA E OS COMANDOS DE BOT
     await bot.process_commands(message)
 
 
-# inicia o bot
+# INICIA O BOT
 bot.run(TOKEN)

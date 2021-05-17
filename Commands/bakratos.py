@@ -9,4 +9,3 @@ async def bakratos(ctx):
 
 def setup(bot):
     bot.add_command(bakratos)
-    print('carregou o bakratos')

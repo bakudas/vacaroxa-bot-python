@@ -1,3 +1,4 @@
+import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from dotenv import load_dotenv
@@ -17,7 +18,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('credenciais.json
 gc = gspread.authorize(credentials)
 
 # ABRE A PLANILHA
-wks = gc.open_by_key('1NwkKOwXHGchOqBQZYosCos54VC6bsyr-Mg7fMjm79RU')
+wks = gc.open_by_key(os.getenv('GOOGLE_ID_SHEET'))
 
 # SELECIONA A PÁGINA DA PLANILHA
 worksheet = wks.get_worksheet(1)
@@ -33,4 +34,4 @@ async def bakudas(ctx):
 
 def setup(bot):
     bot.add_command(bakudas)
-    print("carregou o bakudas.py")
+

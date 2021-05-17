@@ -11,4 +11,3 @@ async def d(ctx, side: int):
 
 def setup(bot):
     bot.add_command(d)
-    print('carregou o dado.py')

@@ -13,4 +13,3 @@ async def vacalinda(ctx):
 
 def setup(bot):
     bot.add_command(vacalinda)
-    print("carregou o vacalinda.py")

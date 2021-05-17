@@ -1,3 +1,4 @@
+import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from dotenv import load_dotenv
@@ -17,13 +18,13 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('credenciais.json
 gc = gspread.authorize(credentials)
 
 # ABRE A PLANILHA
-wks = gc.open_by_key('1NwkKOwXHGchOqBQZYosCos54VC6bsyr-Mg7fMjm79RU')
+wks = gc.open_by_key(os.getenv('GOOGLE_ID_SHEET'))
 
 # SELECIONA A PÁGINA DA PLANILHA
 worksheet = wks.get_worksheet(0)
 
 
-@commands.command(name="quote", help="A vaca é muito fofa")
+@commands.command(name="quote", help="quotes para o dia-a-dia")
 async def quote(ctx):
 
     # LISTA DE QUOTES PARA O COMANDO
@@ -33,4 +34,3 @@ async def quote(ctx):
 
 def setup(bot):
     bot.add_command(quote)
-    print("carregou o quote.py")

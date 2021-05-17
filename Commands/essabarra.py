@@ -9,4 +9,3 @@ async def essabarra(ctx):
 
 def setup(bot):
     bot.add_command(essabarra)
-    print('carregou o essabarra')

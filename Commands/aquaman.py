@@ -9,4 +9,3 @@ async def aquaman(ctx):
 
 def setup(bot):
     bot.add_command(aquaman)
-    print('carregou o aquaman')
