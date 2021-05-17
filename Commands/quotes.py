@@ -18,7 +18,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('gc.json', scope)
 gc = gspread.authorize(credentials)
 
 # ABRE A PLANILHA
-wks = gc.open_by_key(os.getenv('GOOGLE_ID_SHEET'))
+wks = gc.open_by_key(os.environ.get('GOOGLE_ID_SHEET'))
 
 # SELECIONA A PÁGINA DA PLANILHA
 worksheet = wks.get_worksheet(0) #ABA QUOTE DA PLANILHA

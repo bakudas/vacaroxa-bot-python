@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # TOKEN -> GARANTIR SEGURANÇA DISSO
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.environ.get('DISCORD_TOKEN')
 
 # DESCRIÇÃO, HELP E INTENTS
 description = "Bot do vaca"
