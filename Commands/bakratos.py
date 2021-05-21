@@ -1,9 +1,9 @@
 from discord import File
 from discord.ext import commands
 
-@commands.command()
-async def bakratos(ctx):
 
+@commands.command(name="bakratos", help="bakudas cosplay de kratos")
+async def bakratos(ctx):
     await ctx.send(file=File("./Images/Bakratos.png"))
 
 
