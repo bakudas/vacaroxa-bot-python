@@ -5,20 +5,12 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import tweepy
-import requests
 
 # CARREGA O ENV
 load_dotenv()
 
 # TOKEN -> GARANTIR SEGURANÇA DISSO
 TOKEN = os.environ.get('DISCORD_TOKEN')
-
-# TWITTER OAUTH
-auth = tweepy.OAuthHandler(os.environ.get('CONSUMER_KEY'), os.environ.get('CONSUMER_SECRET'))
-auth.set_access_token(os.environ.get('TWITTER_TOKEN'), os.environ.get('TOKEN_SECRET'))
-
-# CRIA O OBJETO API DO TWITTER
-api = tweepy.API(auth)
 
 # DESCRIÇÃO, HELP E INTENTS
 description = "Bot do vaca"
@@ -29,11 +21,28 @@ intents.members = True
 bot = commands.Bot(command_prefix='$', description=description, intents=intents)
 
 
+def twitter_api():
+    # TWITTER OAUTH
+    auth = tweepy.OAuthHandler(os.environ.get('CONSUMER_KEY'), os.environ.get('CONSUMER_SECRET'))
+    auth.set_access_token(os.environ.get('TWITTER_TOKEN'), os.environ.get('TOKEN_SECRET'))
+
+    # CRIA O OBJETO API DO TWITTER
+    api = tweepy.API(auth)
+
+    return api
+
+
+# CRIANDO A API DO TWITTER
+api = twitter_api()
+
+
 # EVENTO INICIAL
 @bot.event
 async def on_ready():
+    # CAPTURA A HORA
     dt = datetime.now()
 
+    # REGISTO DE LOGIN DO BOT
     print('-------------------------------------')
     print(f'Logado como: {bot.user.name} às {dt.hour}:{dt.minute}')
     print('-------------------------------------')
@@ -51,20 +60,44 @@ async def on_ready():
 # EVENTO QUE ESCUTA AS MENSAGENS NO SERVIDOR
 @bot.event
 async def on_message(message):
+    # CHECA SE FOI O BOT QUE MANDOU A MSG
     if message.author.id == bot.user.id:
         return
 
-    if message.content.find("#vacadaily") != -1:
-        msg = message.content
+    # CHECA A MENSAGEM DO DESAFIO DIARIO
+    if message.content.find("#vacadaily") != -1 and 'dungeon keepers' in str(message.author.roles):
+        # GUARDA AS INFOS DA MSG
+        msg = message.content + "\n" \
+                                "\n" \
+                                "Utilizem qualquer estilo artístico," \
+                                "música, código, 3D, ascii, sinal de fumaça, que seja.. sejam criativos \n" \
+                                "\n" \
+                                "Todos com as tags #vacaroxa e #vacaDaily serão retuitados \n" \
+                                "\n" \
+                                "Para feedbacks venham fazer parte da nossa comunidade:\n" \
+                                "discord.gg/vacaroxa"
+
+        # GUARDA O ANEXO DA MSG
         anexo = message.attachments
 
-        print(msg)
-        print(anexo[0].url)
+        # MSG SEM ANEXO
+        if anexo is None:
+            print("mensagem sem anexo!")
+            return
 
-        with open('desafio.png', 'wb') as imagem:
-            resposta = requests.get(anexo[0].url, stream=True)
+        # PERCORRE OS ANEXOS
+        for anexos in anexo:
+            # SALVA A IMAGEM DE ANEXO
+            await anexos.save(f'./desafio/{anexos.filename}')
 
-        await message.channel.send("tou aqui")
+            # POSTA NO TWITER
+            api.update_with_media(f'./desafio/{anexos.filename}', status=msg)
+
+            # LOGA EM CASO DE SUCESSO
+            print("foi postado no twitter!")
+
+            # AVISA SE FOI POSTADO NO TWITTER
+            await message.channel.send(f"{message.author.display_name}, postei o desafio no twitter (:")
 
     # COROTINA NECESSÁRIA PARA UTILIZAR O EVENTO DE ESCUTA E OS COMANDOS DE BOT
     await bot.process_commands(message)
