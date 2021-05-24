@@ -1,5 +1,5 @@
 # bot.py
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import discord
 from discord.ext import commands
@@ -13,7 +13,7 @@ load_dotenv()
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
 # DESCRIÇÃO, HELP E INTENTS
-description = "Bot do vaca"
+description = "Bot colaborativo do vaca"
 intents = discord.Intents.default()
 intents.members = True
 
@@ -40,11 +40,12 @@ api = twitter_api()
 @bot.event
 async def on_ready():
     # CAPTURA A HORA
-    dt = datetime.now()
+    formato_hora = "%H:%M"
+    hora = datetime.strftime(datetime.now(), formato_hora)
 
     # REGISTO DE LOGIN DO BOT
     print('-------------------------------------')
-    print(f'Logado como: {bot.user.name} às {dt.hour}:{dt.minute}')
+    print(f'Logado como: {bot.user.name} às {hora}')
     print('-------------------------------------')
     print('Comandos carregados: ')
 
@@ -52,8 +53,8 @@ async def on_ready():
     diretorio = os.curdir + "/Commands"
     for filename in os.listdir(diretorio):
         if filename.endswith(".py"):
-            bot.load_extension(
-                f'{diretorio.strip("./")}.{filename.strip(".py")}')  # CARREGA NO FORMATO Pasta.nome_arquivo
+            # CARREGA NO FORMATO pasta.nome_arquivo
+            bot.load_extension(f'{diretorio.strip("./")}.{filename.strip(".py")}')
             print(f'{filename}')
 
 
@@ -70,9 +71,11 @@ async def on_message(message):
         msg = message.content + "\n" \
                                 "\n" \
                                 "Utilizem qualquer estilo artístico," \
-                                "música, código, 3D, ascii, sinal de fumaça, que seja.. sejam criativos \n" \
+                                "música, código, 3D, ascii, sinal de " \
+                                "fumaça, que seja.. sejam criativos \n" \
                                 "\n" \
-                                "Todos com as tags #vacaroxa e #vacaDaily serão retuitados \n" \
+                                "Todos com as tags #vacaroxa e " \
+                                "#vacaDaily serão retuitados \n" \
                                 "\n" \
                                 "Para feedbacks venham fazer parte da nossa comunidade:\n" \
                                 "discord.gg/vacaroxa"
