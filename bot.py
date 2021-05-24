@@ -54,7 +54,7 @@ async def on_ready():
     for filename in os.listdir(diretorio):
         if filename.endswith(".py"):
             # CARREGA NO FORMATO pasta.nome_arquivo
-            bot.load_extension(f'{diretorio.strip("./")}.{filename.strip(".py")}')
+            bot.load_extension(f'{diretorio.strip("./")}.{filename.replace(".py", "")}')
             print(f'{filename}')
 
 
