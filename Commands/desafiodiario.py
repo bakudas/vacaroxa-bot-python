@@ -44,13 +44,9 @@ def twitter_api():
 # CRIANDO A API DO TWITTER
 api = twitter_api()
 
-# SETUP COMANDO
-nome_comando = "vacadaily"
-help_comando = 'Gera o desadio diário. Use \'random\' para gera um tema aleatório. ' \
-               'Se for utilizado no canal \'desafio-diário💡\' será postado no twitter' \
-               'na conta do Vaca.'
-
-@commands.command(name=nome_comando, help=help_comando)
+@commands.command(name="vacadaily", help='Gera o desadio diário. Use \'random\' para gera um tema aleatório. ' \
+                                           'Se for utilizado no canal \'desafio-diário💡\' será postado no twitter' \
+                                           'na conta do Vaca.')
 @commands.has_any_role("dungeon keepers")
 async def vacadaily(ctx, tema=" "):
     # CHECHA SE O TEMA É RANDOM OU NÃO
