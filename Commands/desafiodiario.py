@@ -51,7 +51,7 @@ async def vacadaily(ctx, tema=" "):
     # CHECHA SE O TEMA É RANDOM OU NÃO
     if tema != "random":
         # SE NÃO FOR PEGA O TEXTO DO MENSAGEM, TRATA E SETA A VARIAVEL TEMA
-        tema = ctx.message.content.replace('$vacadaily ', '')
+        tema = ctx.message.content.replace('!vacadaily ', '')
     else:
         # LISTA DE TEMAS PARA O COMANDO RANDOM, PUXA DA PLANILHA
         # https://docs.google.com/spreadsheets/d/1NwkKOwXHGchOqBQZYosCos54VC6bsyr-Mg7fMjm79RU/edit#gid=769647817
