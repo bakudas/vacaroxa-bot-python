@@ -13,12 +13,17 @@ load_dotenv()
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
 # DESCRIÇÃO, HELP E INTENTS
-description = "Bot colaborativo do vaca"
+description = "Bot colaborativo do vaca \o/ \n" \
+              "Você pode ajudar a melhorá-lo e também adicionar conteúdo. \n" \
+              "\n" \
+              "repositório do bot: \n" \
+              "https://github.com/bakudas/vacaroxa-bot-python"
+bot_prefix = "!"
 intents = discord.Intents.default()
 intents.members = True
 
 # SETANDO O BOT
-bot = commands.Bot(command_prefix='$', description=description, intents=intents)
+bot = commands.Bot(command_prefix=bot_prefix, description=description, intents=intents)
 
 
 def twitter_api():
