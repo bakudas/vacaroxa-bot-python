@@ -50,7 +50,7 @@ help_comando = 'Gera o desadio diário. Use \'random\' para gera um tema aleató
                'Se for utilizado no canal \'desafio-diário💡\' será postado no twitter' \
                'na conta do Vaca.'
 
-@commands.command(name="nome_comando", help=help_comando)
+@commands.command(name=nome_comando, help=help_comando)
 @commands.has_any_role("dungeon keepers")
 async def vacadaily(ctx, tema=" "):
     # CHECHA SE O TEMA É RANDOM OU NÃO
