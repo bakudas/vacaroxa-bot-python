@@ -1,7 +1,6 @@
 discord~=1.0.1
+tweepy~=3.10.0
 python-dotenv~=0.17.1
 gspread~=3.7.0
 oauth2client~=4.1.3
-tweepy~=3.10.0
-requests~=2.25.1
-twitter~=1.18.0
+Pillow~=8.2.0
