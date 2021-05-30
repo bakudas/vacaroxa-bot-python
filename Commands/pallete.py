@@ -21,6 +21,8 @@ async def paleta(ctx):
     # faz o tratamento do nome da paleta
     name = paleta['name'].replace(" ", "_")
 
+    autor = paleta['author']
+
     # seta a largura da imagem
     width_img = HEIGHT_IMG * len(paleta['colors'])
 
@@ -40,7 +42,9 @@ async def paleta(ctx):
     im.save(f"./Paletas/{name}.png", "PNG")
 
     # envia a mensagem e o arquivo no discord
-    await ctx.send(f"Criado por: {paleta['name']}", file=File(f"./Paletas/{name}.png"))
+    await ctx.send(f" :art: :paintbrush: \n"
+                   f"**Paleta**: {paleta['name']} \n"
+                   f"**Autor**: {autor}", file=File(f"./Paletas/{name}.png"))
 
 
 def setup(bot):
