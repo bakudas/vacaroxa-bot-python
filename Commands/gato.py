@@ -9,7 +9,7 @@ site_api = "https://api.thecatapi.com/v1/images/search?mime_types=gif"
 @commands.command(name='gato', help="mim dá foto de gatinho")
 async def gato(ctx):
     # pick a random number
-    rng = random.randint(0, 100)
+    rng = random.randint(0, 1000)
 
     # se o rgn não for 42 entra no fluxo da api de gatinhos
     if rng != 42:
