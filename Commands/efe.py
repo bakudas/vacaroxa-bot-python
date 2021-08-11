@@ -4,7 +4,7 @@ from discord.ext import commands
 
 @commands.command(name="efe", help="o efe é lindo e podemos provar")
 async def efe(ctx):
-    await ctx.send(file=File("./Images/effe.jpg"))
+    await ctx.send(file=File("./Images/EfeVacinado.jpg"))
 
 
 def setup(bot):
