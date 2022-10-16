@@ -63,6 +63,16 @@ async def on_ready():
             print(f'{filename}')
 
 
+@bot.event
+async def on_message_delete(message):
+
+    msg = str(message.author.display_name) + \
+          ' deletou no canal ' + str(message.channel) + \
+          ' a mensagem: ' + str(message.content)
+
+    await message.channel.send(msg)
+
+
 # EVENTO QUE ESCUTA AS MENSAGENS NO SERVIDOR
 @bot.event
 async def on_message(message):
