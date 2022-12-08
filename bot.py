@@ -19,7 +19,7 @@ description = "Bot colaborativo do vaca \o/ \n" \
               "repositório do bot: \n" \
               "https://github.com/bakudas/vacaroxa-bot-python"
 bot_prefix = "!"
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.members = True
 
 # SETANDO O BOT
