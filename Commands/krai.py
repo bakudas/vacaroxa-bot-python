@@ -7,5 +7,5 @@ async def krai(ctx):
     await ctx.send(file=File("./Images/krai.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(krai)

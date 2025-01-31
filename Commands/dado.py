@@ -9,5 +9,5 @@ async def d(ctx, side: int):
 
     await ctx.reply(f'{name}, você tirou no dado :game_die:: {roll_result}')
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(d)

@@ -7,5 +7,5 @@ async def luiz(ctx):
     await ctx.send(file=File("./Videos/Luiz.mp4"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(luiz)

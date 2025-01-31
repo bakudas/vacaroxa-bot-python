@@ -11,5 +11,5 @@ async def feedback(ctx):
     await ctx.send(msg)
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(feedback)

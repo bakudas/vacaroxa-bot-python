@@ -7,5 +7,5 @@ async def aquaman(ctx):
     await ctx.send(file=File("./Images/Aquaman.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(aquaman)

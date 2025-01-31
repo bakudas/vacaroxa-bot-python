@@ -15,5 +15,5 @@ async def playlist(ctx):
     await ctx.reply(msg)
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(playlist)

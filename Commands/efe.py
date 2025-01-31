@@ -7,5 +7,5 @@ async def efe(ctx):
     await ctx.send(file=File("./Images/EfeVacinado.jpg"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(efe)

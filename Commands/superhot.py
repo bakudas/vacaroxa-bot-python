@@ -7,5 +7,5 @@ async def superhot(ctx):
     await ctx.send(file=File("./Audios/superhot.mp3"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(superhot)

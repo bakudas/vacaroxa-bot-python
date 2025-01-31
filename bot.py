@@ -1,9 +1,9 @@
 # bot.py
-from datetime import datetime, timedelta
 import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+from datetime import datetime, timedelta
 #import tweepy
 
 # CARREGA O ENV
@@ -13,7 +13,7 @@ load_dotenv()
 TOKEN = os.environ.get('DISCORD_TOKEN')
 
 # DESCRIÇÃO, HELP E INTENTS
-description = "Bot colaborativo do vaca \o/ \n" \
+description = "Bot colaborativo do vaca \\o/ \n" \
               "Você pode ajudar a melhorá-lo e também adicionar conteúdo. \n" \
               "\n" \
               "repositório do bot: \n" \
@@ -56,11 +56,13 @@ async def on_ready():
 
     # CARREGA OS COMANDOS DA PASTA ./Commands
     diretorio = os.curdir + "/Commands"
-    for filename in os.listdir(diretorio):
-        if filename.endswith(".py"):
-            # CARREGA NO FORMATO pasta.nome_arquivo
-            bot.load_extension(f'{diretorio.strip("./")}.{filename.replace(".py", "")}')
-            print(f'{filename}')
+    
+    try:
+        [await bot.load_extension(f"Commands.{file[:-3]}") for file in os.listdir(diretorio) if file.endswith(".py")]
+        [print(f'{file[:-3]}') for file in os.listdir(diretorio) if file.endswith(".py")]
+        print('Comandos carregados com sucesso!')
+    except Exception as e:
+        print(f'Erro ao carregar os comandos: {e}')
 
 
 # EVENTO QUE ESCUTA AS MENSAGENS NO SERVIDOR
@@ -71,7 +73,11 @@ async def on_message(message):
         return
 
     # COROTINA NECESSÁRIA PARA UTILIZAR O EVENTO DE ESCUTA E OS COMANDOS DE BOT
-    await bot.process_commands(message)
+    try:
+        await bot.process_commands(message)
+    except Exception as e:
+        await bot.send_message(message.channel, f'Aparetemente você não tem permissão para isso..')
+        print(f'Erro ao processar a mensagem: {e}')
 
 # INICIA O BOT
 bot.run(TOKEN)

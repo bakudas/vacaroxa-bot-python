@@ -7,5 +7,5 @@ async def bakratos(ctx):
     await ctx.send(file=File("./Images/Bakratos.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(bakratos)

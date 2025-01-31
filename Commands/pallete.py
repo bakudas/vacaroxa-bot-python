@@ -1,6 +1,7 @@
 from discord.ext import commands
 from discord import File
 import requests
+import json
 from PIL import Image, ImageDraw, ImageColor
 
 # const para a altura da imagem gerada
@@ -47,5 +48,5 @@ async def paleta(ctx):
                    f"**Autor**: {autor}", file=File(f"./Paletas/{name}.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(paleta)

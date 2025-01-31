@@ -7,5 +7,5 @@ async def muçei(ctx):
     await ctx.send(file=File("./Images/buximchei.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(muçei)

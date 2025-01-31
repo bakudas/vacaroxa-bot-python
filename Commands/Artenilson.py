@@ -8,5 +8,5 @@ async def artenilson(ctx):
     await ctx.send(file=File("./Images/artenilson.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(artenilson)

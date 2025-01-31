@@ -8,5 +8,5 @@ async def funko(ctx):
     await ctx.send(file=File("./Images/funko_vaca.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(funko)

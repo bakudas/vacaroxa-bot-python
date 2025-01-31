@@ -37,7 +37,7 @@ async def especialvoice(ctx, conteudo = " "):
         await ctx.send(random.choice(planilha_conteudo))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(especialvoice)
 
 

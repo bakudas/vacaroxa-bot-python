@@ -11,5 +11,5 @@ async def avatar(ctx, member:Member = " "):
         await ctx.send(member.avatar_url)
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(avatar)

@@ -7,5 +7,5 @@ async def topkek(ctx):
     await ctx.send(file=File("./Images/topkek.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(topkek)

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+while true; do
+    # Verifica se o processo está rodando
+    if ! pgrep -f "bot.py" > /dev/null; then
+        echo "$(date) - bot.py não está rodando. Iniciando..."
+        python3 bot.py &
+    else
+        echo "$(date) - bot.py está rodando normalmente."
+    fi
+    
+    # Aguarda 5 minutos antes da próxima verificação
+    sleep 300
+done

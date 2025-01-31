@@ -42,5 +42,5 @@ async def voltaire(ctx, tema=" "):
 
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(voltaire)

@@ -7,5 +7,5 @@ async def lel(ctx):
     await ctx.send(file=File("./Images/lel.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(lel)

@@ -11,5 +11,5 @@ async def vacalinda(ctx):
 
     await ctx.send(random.choice(resposta))
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(vacalinda)

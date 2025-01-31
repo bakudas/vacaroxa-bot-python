@@ -7,5 +7,5 @@ async def excuse(ctx):
     await ctx.send(file=File("./Images/excuse.gif"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(excuse)

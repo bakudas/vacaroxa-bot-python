@@ -7,5 +7,5 @@ async def alongamentos(ctx):
     await ctx.send(file=File("./Images/alongamento.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(alongamentos)

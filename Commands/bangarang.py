@@ -7,5 +7,5 @@ async def bangarang(ctx):
     await ctx.send(file=File("./Videos/bangaranggirl.mp4"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(bangarang)

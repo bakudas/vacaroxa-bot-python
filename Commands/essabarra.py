@@ -7,5 +7,5 @@ async def essabarra(ctx):
     await ctx.send(file=File("./Audios/essabarra.mp3"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(essabarra)

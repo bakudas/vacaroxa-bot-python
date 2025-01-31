@@ -103,5 +103,5 @@ async def vacadaily(ctx, tema=" "):
             await ctx.send(f"Olá {ctx.message.author.display_name}, o desafio também foi postado no twitter (:")
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(vacadaily)

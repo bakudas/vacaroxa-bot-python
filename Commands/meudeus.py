@@ -7,5 +7,5 @@ async def meudeus(ctx):
     await ctx.send(file=File("./Images/meudeus.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(meudeus)

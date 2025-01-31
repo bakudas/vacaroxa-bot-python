@@ -14,5 +14,5 @@ async def regras(ctx):
     await ctx.send(file=File(random.choice(lista_regras)))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(regras)

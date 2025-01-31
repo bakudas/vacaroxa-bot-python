@@ -31,5 +31,5 @@ async def gato(ctx):
         await ctx.send(file=File('./Images/effe.jpg'))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(gato)

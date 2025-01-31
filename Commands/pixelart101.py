@@ -7,5 +7,5 @@ async def pixelart101(ctx):
     await ctx.send(file=File("./Images/pixelart101.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(pixelart101)

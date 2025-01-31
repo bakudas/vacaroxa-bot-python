@@ -35,5 +35,5 @@ async def quote(ctx, conteudo = " "):
     else:
         await ctx.send(random.choice(planilha_conteudo))
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(quote)

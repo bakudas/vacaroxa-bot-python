@@ -32,6 +32,6 @@ async def bakudas(ctx):
 
     await ctx.send(random.choice(planilha_links))
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(bakudas)
 

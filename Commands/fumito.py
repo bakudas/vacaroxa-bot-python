@@ -7,5 +7,5 @@ async def fumito(ctx):
     await ctx.send(file=File("./Images/fumito.png"))
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_command(fumito)
